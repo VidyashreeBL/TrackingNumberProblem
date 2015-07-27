@@ -8,5 +8,12 @@ public class Transaction
     private char statusCode;
     private char transferCode;
     private boolean isDeleted;
-};
+    
+    Transaction(Range r, int s, int t){
+        range = r;
+        statusCode = s;
+        transactionCode = t;
+        isDeleted = false;
+    }
+}
        
