@@ -54,11 +54,9 @@ public class TransactionManager {
                 mergeIfPossible(); 
             }
             else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP || t.range.classify(current.range) == Range.Relation.MOREOVERLAP){
-            if(i == n){
-                transactions.add(i+1, t);
-            }
-            else
-            //Nothing to do for MOREDISJOINT and LESSDISJOINT cases
+                if(i == len){
+                    transactions.add(i+1, t);
+                }
             }
         }
     }
