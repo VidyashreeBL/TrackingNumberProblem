@@ -61,15 +61,7 @@ public class TransactionManager {
         x.transferCode = t.transferCode;
     }
     
-    private int findTillLessDisjoint(Range r){
-        return 0;
-    }
-    
-    private int findTillMoreDisjoint(Range r){
-        return 0;
-    }
-    
-    private void mergeIsPossible(){
+    private void mergeIfPossible(){
         
     }
 }
