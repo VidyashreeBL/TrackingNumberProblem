@@ -8,13 +8,15 @@ public class TransactionManager {
     
     public void addNewTransaction(Transaction t){
         
-        if(transactions.size() == 0){
+        int len = transactions.size();
+        
+        if(n == 0){
             transactions.add(t);
             return;
         }
         Transaction current;
         //transactions.add(t);
-        for(int i = 0; i < transactions.size(); i++){
+        for(int i = 0; i < n; i++){
             current = transactions.get(i);
             if (t.range.classify(current.range) == Range.Relation.SAME){
                 overwriteCodes(i, t);
