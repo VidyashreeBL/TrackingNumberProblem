@@ -22,17 +22,17 @@ public class TransactionManager {
                     overwrite(i, t);
                 }
                 else{
-                    current.deleted = true;
+                    current.isDeleted = true;
                 }
             }
             else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP){
-                current.deleted = true;
+                current.isDeleted = true;
                 //Slpit and add 2 rows
                 //Range r1 = new Range(t.range.hi+1, current.range.hi);
                 
             }
             else if (t.range.classify(current.range) == Range.Relation.MOREOVERLAP){
-                current.deleted = true;
+                current.isDeleted = true;
                 //Split and add 2 rows
             }
             else if (t.range.classify(current.range) == Range.Relation.MOREDISJOINT){
@@ -51,7 +51,9 @@ public class TransactionManager {
     }
     
     private void overwrite(int index, Transaction t){
-        
+        Transaction x = transactions.get(index);
+        x.statusCode = t.statusCode;
+        x.transferCode = t.transferCode;
     }
     
     private int findTillLessDisjoint(Range r){
