@@ -56,7 +56,6 @@ public class TransactionManagerTest {
              assertEquals(expected.transferCode,i.transferCode);
         }
         
-
     }
    
 }
