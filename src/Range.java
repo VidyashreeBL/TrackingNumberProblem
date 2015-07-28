@@ -8,6 +8,11 @@ public class Range {
     protected int lo;
     protected int hi;
 
+    public Range(int l, int h){
+        lo = l;
+        hi = h;
+    }
+    
     public boolean contains(int x) {
         return this.lo <= x && x <= this.hi;
     }
