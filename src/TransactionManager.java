@@ -61,7 +61,30 @@ public class TransactionManager {
         x.transferCode = t.transferCode;
     }
     
-    private void mergeIfPossible(){
+    private void mergeIsPossible() {
+        for (int i = 0; i < transactions.size()-1 ;i++) {
+            
+            if(transactions.get(i).isDeleted == false) 
+            {
+                for (int j = i+1; j < transactions.size() ;j++) 
+                {
+                    if(transactions.get(j).isDeleted == false)
+                    {
+                        if ((transactions.get(i).statusCode ==  transactions.get(j).statusCode) && ( transactions.get(i).transferCode ==  transactions.get(j).transferCode))
+                             {
+                                if( transactions.get(i).range.hi == transactions.get(j).range.lo - 1 )
+                                {
+                                        transactions.get(i).range.hi = transactions.get(j).range.hi;
+                                        transactions.get(j).isDeleted = true;
+                                        break;
+                                }
+                             }
+                    }       
+                    
+                }
+                
+            }
+        }
         
     }
 }
