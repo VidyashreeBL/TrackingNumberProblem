@@ -14,8 +14,9 @@ public class TransactionManager {
             transactions.add(t);
             return;
         }
+        
         Transaction current;
-        //transactions.add(t);
+        
         for(int i = 0; i < len; i++){
             current = transactions.get(i);
             if (t.range.classify(current.range) == Range.Relation.SAME){
@@ -108,5 +109,17 @@ public class TransactionManager {
             }
         }
         
+    }
+    
+    public String tableToString(){
+    String s = "";
+    Transaction t;
+        for(int i = 0; i < transactions.size(); i++){
+            t = transactions.get(i);
+            if(!t.isDeleted){
+                s+=t.range.lo + " " + t.range.hi + " " + t.statusCode + t.transferCode; 
+            }
+        }
+        return s;
     }
 }
