@@ -24,7 +24,7 @@ public class TransactionManager {
                 if (i == 0){
                     overwriteCodes(i, t);
                 }
-                mergeIsPossible();
+                mergeIfPossible();
             }
             else if (t.range.classify(current.range) == Range.Relation.SUBSET){
                 
@@ -40,7 +40,6 @@ public class TransactionManager {
                 //Split and add 2 rows
             }
             //Nothing to do for MOREDISJOINT and LESSDISJOINT cases
-            }
         }
     }
     
