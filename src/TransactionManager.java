@@ -1,4 +1,7 @@
+package trackingnumberproblem;
 import java.util.ArrayList;
+import trackingnumberproblem.Range;
+import trackingnumberproblem.Transaction;
 
 public class TransactionManager {
     ArrayList<Transaction> transactions = new ArrayList<Transaction>();
@@ -45,6 +48,14 @@ public class TransactionManager {
     }
     
     public void displayTransactions(){
+        for(Transaction t : transactions) {
+            if( t.isDeleted == false) {
+                String printString = "";
+                printString += t.transactionHeader+"\n";
+                printString += t.range.getLow()+" "+t.range.getHigh()+" "+(t.statusCode+"")+" "+(t.transferCode+"");
+                System.out.println(printString);
+            }
+        }
         
     }
     
@@ -62,7 +73,7 @@ public class TransactionManager {
         return 0;
     }
     
-    private void mergeIfPossible(){
+    private void mergeIsPossible(){
         
     }
 }
