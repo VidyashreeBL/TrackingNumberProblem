@@ -53,10 +53,9 @@ public class TransactionManager {
                 transactions.add(i+1, t);
                 mergeIfPossible(); 
             }
-            else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP || t.range.classify(current.range) == Range.Relation.MOREOVERLAP){
-                if(i == len){
-                    transactions.add(i+1, t);
-                }
+            else if (t.range.classify(current.range) == Range.Relation.LESSDISJOINT || t.range.classify(current.range) == Range.Relation.MOREDISJOINT){
+                transactions.add(i+1, t);
+                mergeIfPossible();   
             }
         }
     }
