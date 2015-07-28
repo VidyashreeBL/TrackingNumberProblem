@@ -27,7 +27,13 @@ public class TransactionManager {
                 mergeIfPossible();
             }
             else if (t.range.classify(current.range) == Range.Relation.SUBSET){
-                
+                current.isDeleted = true;
+                Transaction t1 = new Transaction(new Range(current.range.lo, t.range.lo-1),current.statusCode, current.transferCode);
+                Transaction t2 = new Transaction(new Range(t.range.hi+1, current.range.hi),current.statusCode, current.transferCode);
+                transactions.add(i, t1);
+                transactions.add(i+1, t);
+                transactions.add(i+2, t2);
+                break;
             }
             else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP){
                 current.isDeleted = true;
