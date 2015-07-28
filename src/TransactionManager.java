@@ -39,13 +39,7 @@ public class TransactionManager {
                 current.isDeleted = true;
                 //Split and add 2 rows
             }
-            else if (t.range.classify(current.range) == Range.Relation.MOREDISJOINT){
-                int index = findTillLessDisjoint(t.range);
-                //insert at index
-            }
-            else if (t.range.classify(current.range) == Range.Relation.LESSDISJOINT){
-             int index = findTillMoreDisjoint(t.range);
-                //insert at index
+            //Nothing to do for MOREDISJOINT and LESSDISJOINT cases
             }
         }
     }
