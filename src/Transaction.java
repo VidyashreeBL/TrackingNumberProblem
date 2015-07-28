@@ -9,11 +9,12 @@ public class Transaction
     private char transferCode;
     private boolean isDeleted;
     
-    Transaction(Range r, int s, int t){
+    Transaction(Range r, char s, char t){
         range = r;
         statusCode = s;
-        transactionCode = t;
+        transferCode = t;
         isDeleted = false;
     }
 }
+
        
