@@ -26,6 +26,9 @@ public class TransactionManager {
                 }
                 mergeIsPossible();
             }
+            else if (t.range.classify(current.range) == Range.Relation.SUBSET){
+                
+            }
             else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP){
                 current.isDeleted = true;
                 //Slpit and add 2 rows
