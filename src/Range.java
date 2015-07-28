@@ -3,6 +3,8 @@
  *Represents the closed interval [a, b] where a, b
  * are integers.
  */
+package trackingnumberproblem;
+
 public class Range {
 
     protected int lo;
@@ -49,5 +51,13 @@ public class Range {
         if (this.lessThan(r))
             return Relation.LESSOVERLAP;
         return Relation.MOREOVERLAP;
+    }
+    
+    public String getHigh() {
+        return hi+"";
+    }
+    
+    public String getLow() {
+        return lo+"";
     }
 }
