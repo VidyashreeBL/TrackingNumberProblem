@@ -94,6 +94,12 @@ public class TransactionManager {
                                         transactions.get(i).range.hi = transactions.get(j).range.hi;
                                         transactions.get(j).isDeleted = true;
                                 }
+                                
+                                if (( transactions.get(i).range.lo == transactions.get(j).range.lo ) &&  ( transactions.get(i).range.hi == transactions.get(j).range.hi ) )
+                                {
+                                        transactions.get(j).isDeleted = true;
+                                }
+                                
                              }
                     }       
                     
