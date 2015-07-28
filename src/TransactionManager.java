@@ -14,16 +14,14 @@ public class TransactionManager {
         for(int i = 0; i < transactions.size(); i++){
             current = transactions.get(i);
             if (t.range.classify(current.range) == Range.Relation.SAME){
-                overwrite(i, t);
-               //break;
+                overwriteCodes(i, t);
+                break;
             }
             else if (t.range.classify(current.range) == Range.Relation.SUPERSET){
                 if (i == 0){
-                    overwrite(i, t);
+                    overwriteCodes(i, t);
                 }
-                else{
-                    current.isDeleted = true;
-                }
+                mergeIsPossible();
             }
             else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP){
                 current.isDeleted = true;
@@ -50,7 +48,7 @@ public class TransactionManager {
         
     }
     
-    private void overwrite(int index, Transaction t){
+    private void overwriteCodes(int index, Transaction t){
         Transaction x = transactions.get(index);
         x.statusCode = t.statusCode;
         x.transferCode = t.transferCode;
@@ -62,5 +60,9 @@ public class TransactionManager {
     
     private int findTillMoreDisjoint(Range r){
         return 0;
+    }
+    
+    private void mergeIfPossible(){
+        
     }
 }
