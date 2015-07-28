@@ -36,14 +36,20 @@ public class TransactionManager {
                 break;
             }
             else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP){
+                System.out.println("Lessoverlap");
                 current.isDeleted = true;
-                //Slpit and add 2 rows
-                //Range r1 = new Range(t.range.hi+1, current.range.hi);
-                
+                Transaction t1 = new Transaction(new Range(t.range.hi+1, current.range.hi),current.statusCode, current.transferCode);
+                transactions.add(i, t);
+                transactions.add(i+1, t1);
+                mergeIfPossible(); 
             }
             else if (t.range.classify(current.range) == Range.Relation.MOREOVERLAP){
+                System.out.println("Moreoverlap "+ i);
                 current.isDeleted = true;
-                //Split and add 2 rows
+                Transaction t1 = new Transaction(new Range(current.range.lo, t.range.lo - 1),current.statusCode, current.transferCode);
+                transactions.add(i, t1);
+                transactions.add(i+1, t);
+                mergeIfPossible(); 
             }
             //Nothing to do for MOREDISJOINT and LESSDISJOINT cases
         }
