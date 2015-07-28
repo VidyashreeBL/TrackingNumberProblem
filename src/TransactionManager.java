@@ -67,7 +67,7 @@ public class TransactionManager {
         x.transferCode = t.transferCode;
     }
     
-    private void mergeIsPossible() {
+    private void mergeIfPossible() {
         for (int i = 0; i < transactions.size()-1 ;i++) {
             
             if(transactions.get(i).isDeleted == false) 
@@ -82,7 +82,6 @@ public class TransactionManager {
                                 {
                                         transactions.get(i).range.hi = transactions.get(j).range.hi;
                                         transactions.get(j).isDeleted = true;
-                                        break;
                                 }
                              }
                     }       
