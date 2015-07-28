@@ -45,13 +45,13 @@ public class TransactionManager {
     
     public void displayTransactions(){
         for(Transaction t : transactions) {
-            if( t.isDeleted == false) {
-                String printString = "";
-                printString += t.transactionHeader+"\n";
-                printString += t.range.getLow()+" "+t.range.getHigh()+" "+(t.statusCode+"")+" "+(t.transferCode+"");
+            if( !t.isDeleted) {
+                String printString = "";        
+                printString += t.range.getLow()+"\t"+t.range.getHigh()+"\t"+(t.statusCode+"")+"\t"+(t.transferCode+"");
                 System.out.println(printString);
             }
         }
+        System.out.println("--------------");
         
     }
     
