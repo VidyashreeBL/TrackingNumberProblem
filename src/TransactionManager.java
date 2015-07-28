@@ -10,13 +10,13 @@ public class TransactionManager {
         
         int len = transactions.size();
         
-        if(n == 0){
+        if(len == 0){
             transactions.add(t);
             return;
         }
         Transaction current;
         //transactions.add(t);
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < len; i++){
             current = transactions.get(i);
             if (t.range.classify(current.range) == Range.Relation.SAME){
                 overwriteCodes(i, t);
@@ -53,7 +53,13 @@ public class TransactionManager {
                 transactions.add(i+1, t);
                 mergeIfPossible(); 
             }
+            else if (t.range.classify(current.range) == Range.Relation.LESSOVERLAP || t.range.classify(current.range) == Range.Relation.MOREOVERLAP){
+            if(i == n){
+                transactions.add(i+1, t);
+            }
+            else
             //Nothing to do for MOREDISJOINT and LESSDISJOINT cases
+            }
         }
     }
     
